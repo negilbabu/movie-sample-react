@@ -6,7 +6,7 @@ import axios from 'axios';
 function Login() {
   const handleLogin = async (values, { setSubmitting, setFieldError }) => {
     try {
-      const response = await axios.post('http://localhost:8080/login', values);
+      const response = await axios.post(' http://127.0.0.1:8000/user/login', values);
 
       if (response.status === 200) {
         // Redirect user to home page if login is successful

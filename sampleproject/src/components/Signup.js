@@ -7,7 +7,7 @@ function Signup() {
   const handleSubmit = async (values, { setSubmitting, setErrors }) => {
     console.log(values)
     try {
-      const response = await axios.post('http://127.0.0.1:8000/signup', values);
+      const response = await axios.post('http://127.0.0.1:8000/user/signup', values);
 
       if (response.ok) {
         // Redirect user to home page if login is successful
@@ -26,7 +26,7 @@ function Signup() {
     <div className="login">
       <h1>Sign Up</h1>
       <Formik
-        initialValues={{ email: '', password: '', address: '', name: '' }}
+        initialValues={{ email: '', password: '', name: '' }}
         validationSchema={Yup.object().shape({
           email: Yup.string().email('Invalid email').required('Please enter your email'),
           password: Yup.string()
@@ -35,7 +35,6 @@ function Signup() {
               'Your password must be at least 8 characters long and include at least one uppercase letter, one lowercase letter, one number, and one special character.',
             )
             .required('Please enter your password'),
-          address: Yup.string().required('Please enter your address'),
           name: Yup.string().required('Please enter your name'),
         })}
         onSubmit={handleSubmit}
@@ -50,9 +49,9 @@ function Signup() {
             <br></br><br></br>
             <Field type="password" name="password" placeholder="Password" />
             <ErrorMessage name="password" component="div" className="error" />
-
+{/* 
             <Field type="text" name="address" placeholder="Address" />
-            <ErrorMessage name="address" component="div" className="error" />
+            <ErrorMessage name="address" component="div" className="error" /> */}
 
             <ErrorMessage name="server" component="div" className="error" />
             <br></br><br></br>
